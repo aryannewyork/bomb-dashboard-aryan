@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import Page from '../../components/Page';
 import { createGlobalStyle } from 'styled-components';
 import CountUp from 'react-countup';
@@ -19,7 +19,8 @@ import MetamaskFox from '../../assets/img/metamask-fox.svg';
 import { Box, Button, Card, CardContent, Grid, Paper } from '@material-ui/core';
 import ZapModal from '../Bank/components/ZapModal';
 import { Alert } from '@material-ui/lab';
-
+import { IoCloseOutline } from 'react-icons/io5';
+import { BiLoaderAlt } from 'react-icons/bi';
 import { makeStyles } from '@material-ui/core/styles';
 import useBombFinance from '../../hooks/useBombFinance';
 import { ReactComponent as IconTelegram } from '../../assets/img/telegram.svg';
@@ -136,6 +137,35 @@ const Home = () => {
     />,
   );
 
+  const [modal, setModal] = useState(false);
+  const [videoLoading, setVideoLoading] = useState(true);
+
+  const openModal = () => {
+    setModal(!modal);
+  };
+
+  const spinner = () => {
+    setVideoLoading(!videoLoading);
+  };
+
+  // const [onPresentIntroVid] = useModal(
+  //   <grid>
+  //     <Paper>
+  //       <div>
+  //         <iframe
+  //           width="560"
+  //           height="315"
+  //           src="https://www.youtube.com/embed/nhCWmmRNNhc"
+  //           title="YouTube video player"
+  //           frameborder="0"
+  //           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  //           allowfullscreen
+  //         ></iframe>
+  //       </div>
+  //     </Paper>
+  //   </grid>,
+  // );
+
   return (
     <Page>
       <Helmet>
@@ -178,6 +208,39 @@ const Home = () => {
                 </a>{' '}
                 to find out more!
               </p>
+
+              <button onClick={openModal} className="shinyButtonSecondary">
+                Learn about BOMB
+                {modal ? (
+                  <section className="modal__bg">
+                    <div className="modal__align">
+                      <div className="modal__content" modal={modal}>
+                        <IoCloseOutline className="modal__close" arial-label="Close modal" onClick={setModal} />
+                        <div className="modal__video-align">
+                          {videoLoading ? (
+                            <div className="modal__spinner">
+                              {' '}
+                              <BiLoaderAlt className="modal__spinner-style" fadeIn="none" />
+                            </div>
+                          ) : null}
+                          <iframe
+                            className="modal__video-style"
+                            onLoad={spinner}
+                            loading="lazy"
+                            width="800"
+                            height="500"
+                            src="https://www.youtube.com/embed/nhCWmmRNNhc"
+                            title="BOMB Intro Video"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullscreen
+                          ></iframe>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                ) : null}
+              </button>
             </Box>
           </Paper>
         </Grid>
@@ -186,12 +249,15 @@ const Home = () => {
           <Grid item xs={12} sm={12} justify="center" style={{ margin: '12px', display: 'flex' }}>
             <Alert variant="filled" severity="info">
               <h2>xBOMB Promo + Regain PEG!</h2>
-
               <b>Read about the promotion and game plan!</b>{' '}
-              <Button href="https://bombbshare.medium.com/operation-regain-peg-xbomb-promo-b8d59dc6e105" target={"_blank"} className="shinyButton" style={{ margin: '10px' }}>
+              <Button
+                href="https://bombbshare.medium.com/operation-regain-peg-xbomb-promo-b8d59dc6e105"
+                target={'_blank'}
+                className="shinyButton"
+                style={{ margin: '10px' }}
+              >
                 READ ARTICLE
               </Button>
-
             </Alert>
           </Grid>
         </Grid>
@@ -214,24 +280,26 @@ const Home = () => {
               <Button href="https://bomb.farm/" className="shinyButtonGreen" style={{ margin: '5px' }}>
                 Autovaults
               </Button>
-              <Button
-                href={buyBombAddress}
-                style={{ margin: '5px' }}
-                className={'shinyButton ' + classes.button}
-              >
+              <Button href={buyBombAddress} style={{ margin: '5px' }} className={'shinyButton ' + classes.button}>
                 Buy BOMB
               </Button>
-              <Button
-                href={buyBShareAddress}
-                className={'shinyButton ' + classes.button}
-                style={{ margin: '5px' }}
-              >
+              <Button href={buyBShareAddress} className={'shinyButton ' + classes.button} style={{ margin: '5px' }}>
                 Buy BSHARE
               </Button>
-              <Button target="_blank" href="https://dexscreener.com/bsc/0x84392649eb0bc1c1532f2180e58bae4e1dabd8d6" className="shinyButton" style={{ margin: '5px' }}>
+              <Button
+                target="_blank"
+                href="https://dexscreener.com/bsc/0x84392649eb0bc1c1532f2180e58bae4e1dabd8d6"
+                className="shinyButton"
+                style={{ margin: '5px' }}
+              >
                 BOMB Chart
               </Button>
-              <Button target="_blank" href="https://dexscreener.com/bsc/0x1303246855b5b5ebc71f049fdb607494e97218f8" className="shinyButton" style={{ margin: '5px' }}>
+              <Button
+                target="_blank"
+                href="https://dexscreener.com/bsc/0x1303246855b5b5ebc71f049fdb607494e97218f8"
+                className="shinyButton"
+                style={{ margin: '5px' }}
+              >
                 BSHARE Chart
               </Button>
             </CardContent>
@@ -260,7 +328,9 @@ const Home = () => {
               <h2 style={{ marginBottom: '10px' }}>BOMB</h2>
               10,000 BOMB (1.0 Peg) =
               <Box>
-                <span style={{ fontSize: '30px', color: 'white' }}>{bombPriceInBNB ? bombPriceInBNB : '-.----'} BTC</span>
+                <span style={{ fontSize: '30px', color: 'white' }}>
+                  {bombPriceInBNB ? bombPriceInBNB : '-.----'} BTC
+                </span>
               </Box>
               <Box>
                 <span style={{ fontSize: '16px', alignContent: 'flex-start' }}>
@@ -303,7 +373,9 @@ const Home = () => {
                 </span>
               </Box>
               <Box>
-                <span style={{ fontSize: '16px' }}>${bSharePriceInDollars ? bSharePriceInDollars : '-.--'} / BSHARE</span>
+                <span style={{ fontSize: '16px' }}>
+                  ${bSharePriceInDollars ? bSharePriceInDollars : '-.--'} / BSHARE
+                </span>
               </Box>
               <span style={{ fontSize: '12px' }}>
                 Market Cap: ${roundAndFormatNumber((bShareCirculatingSupply * bSharePriceInDollars).toFixed(2), 2)}{' '}

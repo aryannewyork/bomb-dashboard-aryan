@@ -14,7 +14,7 @@ import FarmCard from './FarmCard';
 import { createGlobalStyle } from 'styled-components';
 
 import useBanks from '../../hooks/useBanks';
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet';
 
 import HomeImage from '../../assets/img/background.jpg';
 const BackgroundImage = createGlobalStyle`
@@ -25,8 +25,7 @@ const BackgroundImage = createGlobalStyle`
   }
 `;
 
-const TITLE = 'bomb.money | Farms'
-
+const TITLE = 'bomb.money | Farms';
 
 const Farm = () => {
   const [banks] = useBanks();
@@ -36,7 +35,6 @@ const Farm = () => {
   return (
     <Switch>
       <Page>
-
         <Route exact path={path}>
           <BackgroundImage />
           <Helmet>
@@ -45,7 +43,7 @@ const Farm = () => {
           {!!account ? (
             <Container maxWidth="lg">
               <Typography color="textYellow" align="center" variant="h3" gutterBottom>
-                BSHARE Reward Farms
+                Reward Farms
               </Typography>
 
               <Box mt={5}>
@@ -93,12 +91,12 @@ const Farm = () => {
                 </div>
 
                 <div hidden={activeBanks.filter((bank) => bank.sectionInUI === 0).length === 0}>
-                  <Typography color="textPrimary" variant="h4" gutterBottom style={{ marginTop: '20px' }}>
-                    Genesis Pools
+                  <Typography color="textYellow" align="center" variant="h4" gutterBottom style={{ marginTop: '40px' }}>
+                    Earn BSHARE by staking BUSM Liquidity
                   </Typography>
-                  <Alert variant="filled" severity="warning">
+                  {/* <Alert variant="filled" severity="warning">
                     Genesis pools have ended. Please claim all rewards and remove funds from Genesis pools.
-                  </Alert>
+                  </Alert> */}
                   <Grid container spacing={3} style={{ marginTop: '20px' }}>
                     {activeBanks
                       .filter((bank) => bank.sectionInUI === 0)

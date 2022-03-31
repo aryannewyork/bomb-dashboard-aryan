@@ -47,9 +47,7 @@ const Bank: React.FC = () => {
     vaultUrl = 'https://www.bomb.farm/#/bsc/';
   }
      else if (bank.depositTokenName.includes('BSHARE-BNB')) {
-
     vaultUrl = 'https://www.bomb.farm/#/bsc/vault/bomb-bshare-wbnb';
-
   }
 
   return account && bank ? (
@@ -134,6 +132,8 @@ const LPTokenHelpText: React.FC<{bank: BankEntity}> = ({bank}) => {
   const bombFinance = useBombFinance();
   const bombAddr = bombFinance.BOMB.address;
   const bshareAddr = bombFinance.BSHARE.address;
+    const busmAddr = bombFinance.BUSM.address;
+  const busdAddr = bombFinance.BUSD.address;
 
   let pairName: string;
   let uniswapUrl: string;
@@ -146,6 +146,11 @@ const LPTokenHelpText: React.FC<{bank: BankEntity}> = ({bank}) => {
   else if (bank.depositTokenName.includes('BOMB-BSHARE')) {
     pairName = 'BOMB-BSHARE pair';
     uniswapUrl = 'https://pancakeswap.finance/add/' + bombAddr + '/' + bshareAddr;
+ //   vaultUrl = 'https://www.bomb.farm/#/bsc/vault/bomb-bomb-btcb';
+  }
+      else if (bank.depositTokenName.includes('BUSM-BUSD')) {
+    pairName = 'BUSM-BUSD pair';
+    uniswapUrl = 'https://pancakeswap.finance/add/' + busmAddr + '/' + busdAddr;
  //   vaultUrl = 'https://www.bomb.farm/#/bsc/vault/bomb-bomb-btcb';
   }
   else {

@@ -31,6 +31,7 @@ export class BombFinance {
 
   BOMBBTCB_LP: Contract;
   BOMB: ERC20;
+  BUSD: ERC20;
   BSHARE: ERC20;
   BBOND: ERC20;
   XBOMB: ERC20;
@@ -42,6 +43,8 @@ export class BombFinance {
   BBOMB_BTCB: ERC20;
   BBOMBBOMB: ERC20;
   BBOMBBTCB: ERC20;
+  BUSMBUSD_LP: Contract;
+  BUSM: ERC20;
 
   constructor(cfg: Configuration) {
     const { deployments, externalTokens } = cfg;
@@ -62,6 +65,9 @@ export class BombFinance {
     this.BNB = this.externalTokens['WBNB'];
     this.BTC = this.externalTokens['BTCB'];
     this.XBOMB = new ERC20(deployments.xBOMB.address, provider, 'XBOMB');
+    this.BUSM = this.externalTokens['BUSM'];
+    this.BUSD = this.externalTokens['BUSD'];
+
     // this.BBOMB_BOMB = new ERC20(deployments.BombBorrowable.address, provider, 'bBOMB');
     // this.BBOMB_BTCB = new ERC20(deployments.BtcbBorrowable.address, provider, 'bBOMB');
 
@@ -78,6 +84,7 @@ export class BombFinance {
     // Uniswap V2 Pair
 
     this.BOMBBTCB_LP = new Contract(externalTokens['BOMB-BTCB-LP'][0], IUniswapV2PairABI, provider);
+    this.BUSMBUSD_LP = new Contract(externalTokens['BUSM-BUSD-LP'][0], IUniswapV2PairABI, provider);
 
     this.config = cfg;
     this.provider = provider;
@@ -404,13 +411,15 @@ export class BombFinance {
     }
     const rewardPerSecond = await poolContract.tSharePerSecond();
     if (depositTokenName.startsWith('BOMB-BTCB')) {
-      return rewardPerSecond.mul(35000).div(100000);
+      return rewardPerSecond.mul(35000).div(105000);
     } else if (depositTokenName.startsWith('BOMB-BSHARE')) {
       return rewardPerSecond.mul(0).div(119000);
     } else if (depositTokenName.startsWith('BOMB')) {
-      return rewardPerSecond.mul(50000).div(100000);
+      return rewardPerSecond.mul(50000).div(105000);
+    } else if (depositTokenName.startsWith('BUSM-BUSD')) {
+      return rewardPerSecond.mul(5000).div(105000);
     } else {
-      return rewardPerSecond.mul(15000).div(100000);
+      return rewardPerSecond.mul(15000).div(105000);
     }
     // if (depositTokenName.startsWith('BOMB-BTCB')) {
     //   return rewardPerSecond.mul(41650).div(10000);
@@ -443,10 +452,10 @@ export class BombFinance {
         tokenPrice = await this.getLPTokenPrice(token, this.BSHARE, false);
       } else if (tokenName === 'BOMB-BSHARE-LP') {
         tokenPrice = await this.getLPTokenPrice(token, this.BOMB, true);
-      } else if (tokenName === 'BSHARE-BNB-APELP') {
-        tokenPrice = await this.getApeLPTokenPrice(token, this.BSHARE, false);
-      } else if (tokenName === 'BOMB-BTCB-APELP') {
-        tokenPrice = await this.getApeLPTokenPrice(token, this.BOMB, true);
+        // } else if (tokenName === 'BSHARE-BNB-APELP') {
+        //   tokenPrice = await this.getLPTokenPrice(token, this.BSHARE, false);
+      } else if (tokenName === 'BUSM-BUSD-LP') {
+        tokenPrice = await this.getBusdLPTokenPrice(token, this.BUSM, true);
       } else {
         tokenPrice = await this.getTokenPriceFromPancakeswap(token);
         tokenPrice = (Number(tokenPrice) * Number(priceOfOneFtmInDollars)).toString();
@@ -543,12 +552,13 @@ export class BombFinance {
    * @param isBomb sanity check for usage of bomb token or tShare
    * @returns price of the LP token
    */
-  async getApeLPTokenPrice(lpToken: ERC20, token: ERC20, isBomb: boolean): Promise<string> {
+  async getBusdLPTokenPrice(lpToken: ERC20, token: ERC20, isBomb: boolean): Promise<string> {
     const totalSupply = getFullDisplayBalance(await lpToken.totalSupply(), lpToken.decimal);
     //Get amount of tokenA
     const tokenSupply = getFullDisplayBalance(await token.balanceOf(lpToken.address), token.decimal);
-    const stat = isBomb === true ? await this.getBombStat() : await this.getShareStat();
-    const priceOfToken = stat.priceInDollars;
+    // const stat = isBomb === true ? await this.getBombStat() : await this.getShareStat();
+    const priceToken = await this.getTokenPriceFromPancakeswapBUSD(this.BUSM);
+    const priceOfToken = Number(priceToken);
     const tokenInLP = Number(tokenSupply) / Number(totalSupply);
     const tokenPrice = (Number(priceOfToken) * tokenInLP * 2) //We multiply by 2 since half the price of the lp token is the price of each piece of the pair. So twice gives the total
       .toString();
@@ -647,6 +657,23 @@ export class BombFinance {
     const { WBNB } = this.config.externalTokens;
 
     const wftm = new Token(56, WBNB[0], WBNB[1], 'WBNB');
+    const token = new Token(56, tokenContract.address, tokenContract.decimal, tokenContract.symbol);
+    try {
+      const wftmToToken = await Fetcher.fetchPairData(wftm, token, this.provider);
+      const priceInBUSD = new Route([wftmToToken], token);
+      return priceInBUSD.midPrice.toFixed(4);
+    } catch (err) {
+      console.error(`Failed to fetch token price of ${tokenContract.symbol}: ${err}`);
+    }
+  }
+
+  async getTokenPriceFromPancakeswapBUSD(tokenContract: ERC20): Promise<string> {
+    const ready = await this.provider.ready;
+    if (!ready) return;
+    //const { chainId } = this.config;
+    const { BUSD } = this.config.externalTokens;
+
+    const wftm = new Token(56, BUSD[0], BUSD[1], 'BUSD');
     const token = new Token(56, tokenContract.address, tokenContract.decimal, tokenContract.symbol);
     try {
       const wftmToToken = await Fetcher.fetchPairData(wftm, token, this.provider);

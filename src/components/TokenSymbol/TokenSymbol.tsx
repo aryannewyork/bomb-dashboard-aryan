@@ -5,12 +5,14 @@ import bombLogo from '../../assets/img/bomb.png';
 import tShareLogo from '../../assets/img/bshares.png';
 import bombLogoPNG from '../../assets/img/bomb.png';
 import xbombLogo from '../../assets/img/xbomb.png';
-
+import busmLogo from '../../assets/img/busm-256.png'
 import tShareLogoPNG from '../../assets/img/bshares.png';
 import tBondLogo from '../../assets/img/bbond.png';
 
 import bombFtmLpLogo from '../../assets/img/bomb-bitcoin-LP.png';
 import bshareFtmLpLogo from '../../assets/img/bshare-bnb-LP.png';
+import busmBusdLpLogo from '../../assets/img/busm-256.png';
+
 
 import bnbLogo from '../../assets/img/bnb.png';
 import btcLogo from '../../assets/img/BCTB-icon.png';
@@ -24,6 +26,7 @@ const logosBySymbol: {[title: string]: string} = {
   XBOMB: xbombLogo,
   BSHARE: tShareLogo,
   BBOND: tBondLogo,
+  BUSM: busmLogo,
   WBNB: bnbLogo,
   BOO: bnbLogo,
   SHIBA: bnbLogo,
@@ -37,7 +40,8 @@ const logosBySymbol: {[title: string]: string} = {
   'BOMB-BNB-LP': bombFtmLpLogo,
   'BOMB-BTCB-LP': bombFtmLpLogo,
   'BSHARE-BOMB-LP': bombFtmLpLogo,
-    'BOMB-BSHARE-LP': bombFtmLpLogo,
+  'BOMB-BSHARE-LP': bombFtmLpLogo,
+  'BUSM-BUSD-LP': busmBusdLpLogo,
 
   'BSHARE-BNB-LP': bshareFtmLpLogo,
   'BSHARE-BNB-APELP': bshareFtmLpLogo,

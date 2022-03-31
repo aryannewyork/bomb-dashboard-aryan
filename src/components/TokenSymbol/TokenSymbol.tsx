@@ -11,7 +11,7 @@ import tBondLogo from '../../assets/img/bbond.png';
 
 import bombFtmLpLogo from '../../assets/img/bomb-bitcoin-LP.png';
 import bshareFtmLpLogo from '../../assets/img/bshare-bnb-LP.png';
-import busmBusdLpLogo from '../../assets/img/busm-256.png';
+import busmBusdLpLogo from '../../assets/img/busm-busd-lp.png';
 
 
 import bnbLogo from '../../assets/img/bnb.png';

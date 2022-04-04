@@ -45,6 +45,8 @@ export class BombFinance {
   BBOMBBTCB: ERC20;
   BUSMBUSD_LP: Contract;
   BUSM: ERC20;
+  BOMB_MAXI: ERC20;
+  BSHARE_MAXI: ERC20;
 
   constructor(cfg: Configuration) {
     const { deployments, externalTokens } = cfg;
@@ -80,6 +82,9 @@ export class BombFinance {
     this.BBOMB_BTCB = new ERC20(deployments.BtcbBorrowable.address, provider, 'bBOMB');
     this.BOMB_BORROWABLE = new Contract(externalTokens['BBOMB-BOMB'][0], IBombBorrowableABI, provider);
     this.BTCB_BORROWABLE = new Contract(externalTokens['BBOMB-BTCB'][0], IBombBorrowableABI, provider);
+
+    this.BOMB_MAXI = new ERC20(deployments.BombMaxiBShareRewardPool.address, provider, '80BOMB-20BTCB');
+    this.BSHARE_MAXI = new ERC20(deployments.BshareMaxiBShareRewardPool.address, provider, '80BSHARE-20WBNB');
 
     // Uniswap V2 Pair
 

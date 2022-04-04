@@ -62,20 +62,21 @@ const Home = () => {
   const tBondStats = useBondStats();
   const bombFinance = useBombFinance();
 
-  let bomb;
-  if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-    bomb = bombTesting;
-  } else {
-    bomb = bombProd;
-  }
+  // let bomb;
+  // if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+  //   bomb = bombTesting;
+  // } else {
+  //   bomb = bombProd;
+  // }
 
-  const buyBombAddress = 'https://app.1inch.io/#/56/swap/BTCB/BOMB';
-  //  'https://pancakeswap.finance/swap?inputCurrency=0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c&outputCurrency=' +
-  //'https://app.bogged.finance/bsc/swap?tokenIn=0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c&tokenOut=' + bomb.address;
+  const buyBombAddress = //'https://app.1inch.io/#/56/swap/BTCB/BOMB';
+    //  'https://pancakeswap.finance/swap?inputCurrency=0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c&outputCurrency=' +
+    'https://app.bogged.finance/bsc/swap?tokenIn=0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c&tokenOut=0x522348779DCb2911539e76A1042aA922F9C47Ee3';
   //https://pancakeswap.finance/swap?outputCurrency=0x531780FAcE85306877D7e1F05d713D1B50a37F7A';
-  const buyBShareAddress = 'https://app.1inch.io/#/56/swap/BNB/BSHARE';
-  // 'https://app.bogged.finance/bsc/swap?tokenIn=BNB&tokenOut=0x531780FAcE85306877D7e1F05d713D1B50a37F7A';
-  const buyBusmAddress = 'https://app.1inch.io/#/56/swap/BUSD/0x6216B17f696B14701E17BCB24Ec14430261Be94A';
+  const buyBShareAddress = //'https://app.1inch.io/#/56/swap/BNB/BSHARE';
+    'https://app.bogged.finance/bsc/swap?tokenIn=BNB&tokenOut=0x531780FAcE85306877D7e1F05d713D1B50a37F7A';
+  const buyBusmAddress =
+    'https://app.bogged.finance/bsc/swap?tokenIn=0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56&tokenOut=0x6216B17f696B14701E17BCB24Ec14430261Be94A';
   const bombLPStats = useMemo(() => (bombFtmLpStats ? bombFtmLpStats : null), [bombFtmLpStats]);
   const bshareLPStats = useMemo(() => (bShareFtmLpStats ? bShareFtmLpStats : null), [bShareFtmLpStats]);
   const bombPriceInDollars = useMemo(

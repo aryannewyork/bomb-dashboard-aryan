@@ -18,6 +18,7 @@ import useRedeem from '../../hooks/useRedeem';
 import {Bank as BankEntity} from '../../bomb-finance';
 import useBombFinance from '../../hooks/useBombFinance';
 import {Alert} from '@material-ui/lab';
+import { bankDefinitions } from '../../config';
 
 const useStyles = makeStyles((theme) => ({
   gridItem: {
@@ -35,9 +36,22 @@ const Bank: React.FC = () => {
   const bank = useBank(bankId);
 
   const {account} = useWallet();
-  const {onRedeem} = useRedeem(bank);
-  const statsOnPool = useStatsForPool(bank);
+  const { onRedeem } = useRedeem(bank);
 
+
+   let statsOnPool = useStatsForPool(bank);
+  console.log(statsOnPool);
+
+    if (bank.depositTokenName.includes('80BOMB') || bank.depositTokenName.includes('80BSHARE')) {
+      statsOnPool = {
+        dailyAPR: 'COMING SOON',
+        yearlyAPR: 'COMING SOON',
+        TVL: 'COMING SOON',
+      }
+    } 
+  
+  
+  //const statsOnPool = useStatsForPool(bank);
   let vaultUrl: string;
   if (bank.depositTokenName.includes('BOMB-BTCB')) {
     vaultUrl = 'https://www.bomb.farm/#/bsc/vault/bomb-bomb-btcb';
@@ -135,12 +149,24 @@ const LPTokenHelpText: React.FC<{bank: BankEntity}> = ({bank}) => {
     const busmAddr = bombFinance.BUSM.address;
   const busdAddr = bombFinance.BUSD.address;
 
+  const depositToken = bank.depositTokenName;
+  console.log({depositToken})
   let pairName: string;
   let uniswapUrl: string;
  // let vaultUrl: string;
   if (bank.depositTokenName.includes('BOMB-BTCB')) {
     pairName = 'BOMB-BTCB pair';
     uniswapUrl = 'https://pancakeswap.finance/add/0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c/' + bombAddr;
+ //   vaultUrl = 'https://www.bomb.farm/#/bsc/vault/bomb-bomb-btcb';
+  }
+    else if (bank.depositTokenName.includes('80BOMB-20BTCB')) {
+    pairName = 'BOMB MAXI 80% BOMB 20% BTCB';
+    uniswapUrl = 'https://app.acsi.finance/#/pool/0xd6f52e8ab206e59a1e13b3d6c5b7f31e90ef46ef000200000000000000000028/invest';
+ //   vaultUrl = 'https://www.bomb.farm/#/bsc/vault/bomb-bomb-btcb';
+  }
+      else if (bank.depositTokenName.includes('80BSHARE-20WBNB')) {
+    pairName = 'BSHARE MAXI 80% BSHARE 20% BNB';
+    uniswapUrl = 'https://app.acsi.finance/#/pool/0x2c374ed1575e5c2c02c569f627299e902a1972cb000200000000000000000027/invest';
  //   vaultUrl = 'https://www.bomb.farm/#/bsc/vault/bomb-bomb-btcb';
   }
   else if (bank.depositTokenName.includes('BOMB-BSHARE')) {
@@ -153,6 +179,7 @@ const LPTokenHelpText: React.FC<{bank: BankEntity}> = ({bank}) => {
     uniswapUrl = 'https://pancakeswap.finance/add/' + busmAddr + '/' + busdAddr;
  //   vaultUrl = 'https://www.bomb.farm/#/bsc/vault/bomb-bomb-btcb';
   }
+    
   else {
     pairName = 'BSHARE-BNB pair';
     uniswapUrl = 'https://pancakeswap.finance/add/BNB/' + bshareAddr;
@@ -163,7 +190,7 @@ const LPTokenHelpText: React.FC<{bank: BankEntity}> = ({bank}) => {
     <Card>
       <CardContent>
         <StyledLink href={uniswapUrl} target="_blank">
-          {`Provide liquidity for ${pairName} now on PancakeSwap`}
+          {`Provide liquidity for ${pairName} now!`}
         </StyledLink>
       </CardContent>
     </Card>

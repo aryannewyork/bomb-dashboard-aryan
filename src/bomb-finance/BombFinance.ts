@@ -416,15 +416,19 @@ export class BombFinance {
     }
     const rewardPerSecond = await poolContract.tSharePerSecond();
     if (depositTokenName.startsWith('BOMB-BTCB')) {
-      return rewardPerSecond.mul(35000).div(105000);
+      return rewardPerSecond.mul(400).div(1000);
     } else if (depositTokenName.startsWith('BOMB-BSHARE')) {
-      return rewardPerSecond.mul(0).div(119000);
+      return rewardPerSecond.mul(0).div(1000);
     } else if (depositTokenName.startsWith('BOMB')) {
-      return rewardPerSecond.mul(50000).div(105000);
+      return rewardPerSecond.mul(0).div(1000);
     } else if (depositTokenName.startsWith('BUSM-BUSD')) {
-      return rewardPerSecond.mul(5000).div(105000);
+      return rewardPerSecond.mul(100).div(1000);
+    } else if (depositTokenName.startsWith('80BOMB')) {
+      return rewardPerSecond.mul(200).div(1000);
+    } else if (depositTokenName.startsWith('80BSHARE')) {
+      return rewardPerSecond.mul(100).div(1000);
     } else {
-      return rewardPerSecond.mul(15000).div(105000);
+      return rewardPerSecond.mul(200).div(1000);
     }
     // if (depositTokenName.startsWith('BOMB-BTCB')) {
     //   return rewardPerSecond.mul(41650).div(10000);

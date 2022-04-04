@@ -69,12 +69,13 @@ const Home = () => {
     bomb = bombProd;
   }
 
-  const buyBombAddress =
-    //  'https://pancakeswap.finance/swap?inputCurrency=0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c&outputCurrency=' +
-    'https://app.bogged.finance/bsc/swap?tokenIn=0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c&tokenOut=' + bomb.address;
+  const buyBombAddress = 'https://app.1inch.io/#/56/swap/BTCB/BOMB';
+  //  'https://pancakeswap.finance/swap?inputCurrency=0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c&outputCurrency=' +
+  //'https://app.bogged.finance/bsc/swap?tokenIn=0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c&tokenOut=' + bomb.address;
   //https://pancakeswap.finance/swap?outputCurrency=0x531780FAcE85306877D7e1F05d713D1B50a37F7A';
-  const buyBShareAddress =
-    'https://app.bogged.finance/bsc/swap?tokenIn=BNB&tokenOut=0x531780FAcE85306877D7e1F05d713D1B50a37F7A';
+  const buyBShareAddress = 'https://app.1inch.io/#/56/swap/BNB/BSHARE';
+  // 'https://app.bogged.finance/bsc/swap?tokenIn=BNB&tokenOut=0x531780FAcE85306877D7e1F05d713D1B50a37F7A';
+  const buyBusmAddress = 'https://app.1inch.io/#/56/swap/BUSD/0x6216B17f696B14701E17BCB24Ec14430261Be94A';
   const bombLPStats = useMemo(() => (bombFtmLpStats ? bombFtmLpStats : null), [bombFtmLpStats]);
   const bshareLPStats = useMemo(() => (bShareFtmLpStats ? bShareFtmLpStats : null), [bShareFtmLpStats]);
   const bombPriceInDollars = useMemo(
@@ -280,11 +281,29 @@ const Home = () => {
               <Button href="https://bomb.farm/" className="shinyButtonGreen" style={{ margin: '5px' }}>
                 Autovaults
               </Button>
-              <Button href={buyBombAddress} style={{ margin: '5px' }} className={'shinyButton ' + classes.button}>
+              <Button
+                href={buyBombAddress}
+                style={{ margin: '5px' }}
+                target="_blank"
+                className={'shinyButton ' + classes.button}
+              >
                 Buy BOMB
               </Button>
-              <Button href={buyBShareAddress} className={'shinyButton ' + classes.button} style={{ margin: '5px' }}>
+              <Button
+                href={buyBShareAddress}
+                className={'shinyButton ' + classes.button}
+                target="_blank"
+                style={{ margin: '5px' }}
+              >
                 Buy BSHARE
+              </Button>
+              <Button
+                href={buyBusmAddress}
+                className={'shinyButton ' + classes.button}
+                target="_blank"
+                style={{ margin: '5px' }}
+              >
+                Buy BUSM
               </Button>
               <Button
                 target="_blank"

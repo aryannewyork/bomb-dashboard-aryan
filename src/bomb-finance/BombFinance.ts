@@ -83,8 +83,8 @@ export class BombFinance {
     this.BOMB_BORROWABLE = new Contract(externalTokens['BBOMB-BOMB'][0], IBombBorrowableABI, provider);
     this.BTCB_BORROWABLE = new Contract(externalTokens['BBOMB-BTCB'][0], IBombBorrowableABI, provider);
 
-    this.BOMB_MAXI = new ERC20(deployments.BombMaxiBShareRewardPool.address, provider, '80BOMB-20BTCB');
-    this.BSHARE_MAXI = new ERC20(deployments.BshareMaxiBShareRewardPool.address, provider, '80BSHARE-20WBNB');
+    this.BOMB_MAXI = new ERC20(deployments.BombMaxiLPBShareRewardPool.address, provider, '80BOMB-20BTCB-LP');
+    this.BSHARE_MAXI = new ERC20(deployments.BshareMaxiLPBShareRewardPool.address, provider, '80BSHARE-20WBNB-LP');
 
     // Uniswap V2 Pair
 
@@ -311,6 +311,14 @@ export class BombFinance {
   async getPoolAPRs(bank: Bank): Promise<PoolStats> {
     if (this.myAccount === undefined) return;
     const depositToken = bank.depositToken;
+    // if (depositToken.symbol === '80BOMB-20BTCB-LP' || depositToken.symbol === '80BSHARE-20WBNB-LP') {
+    //   const temp = 'TBD';
+    //   return {
+    //     dailyAPR: temp,
+    //     yearlyAPR: temp,
+    //     TVL: temp,
+    //   };
+    // }
     const poolContract = this.contracts[bank.contract];
     const depositTokenPrice = await this.getDepositTokenPriceInDollars(bank.depositTokenName, depositToken);
     const stakeInPool = await depositToken.balanceOf(bank.address);
@@ -470,6 +478,7 @@ export class BombFinance {
         tokenPrice = (Number(tokenPrice) * Number(priceOfOneFtmInDollars)).toString();
       }
     }
+    console.log({ tokenPrice });
     return tokenPrice;
   }
 

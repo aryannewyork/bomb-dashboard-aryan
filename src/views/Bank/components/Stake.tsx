@@ -143,8 +143,8 @@ const Stake: React.FC<StakeProps> = ({bank}) => {
                       bank.depositTokenName === 'BOMB-BSHARE-LP' ||
                        bank.depositTokenName === 'BOMB' ||
                       bank.depositTokenName === 'BOMB-BTCB-LP' ||
-                      bank.depositTokenName === '80BOMB-20BTCB' ||
-                        bank.depositTokenName === '80BSHARE-20WBNB' ||
+                      bank.depositTokenName === '80BOMB-20BTCB-LP' ||
+                        bank.depositTokenName === '80BSHARE-20WBNB-LP' ||
                       bank.depositTokenName === 'BUSM-BUSD-LP' 
 
                   }

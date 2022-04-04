@@ -39,14 +39,14 @@ const logosBySymbol: {[title: string]: string} = {
   SVL: bnbLogo,
   'BOMB-BNB-LP': bombFtmLpLogo,
   'BOMB-BTCB-LP': bombFtmLpLogo,
-    '80BOMB-20BTCB': bombFtmLpLogo,
+    '80BOMB-20BTCB-LP': bombFtmLpLogo,
 
   'BSHARE-BOMB-LP': bombFtmLpLogo,
   'BOMB-BSHARE-LP': bombFtmLpLogo,
   'BUSM-BUSD-LP': busmBusdLpLogo,
 
   'BSHARE-BNB-LP': bshareFtmLpLogo,
-    '80BSHARE-20WBNB': bshareFtmLpLogo,
+    '80BSHARE-20WBNB-LP': bshareFtmLpLogo,
   'BSHARE-BNB-APELP': bshareFtmLpLogo,
   'BOMB-BTCB-APELP': bombFtmLpLogo,
 };

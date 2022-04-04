@@ -27,7 +27,7 @@ import useClaimRewardCheck from '../../hooks/boardroom/useClaimRewardCheck';
 import useWithdrawCheck from '../../hooks/boardroom/useWithdrawCheck';
 import ProgressCountdown from './components/ProgressCountdown';
 import { createGlobalStyle } from 'styled-components';
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet';
 
 import HomeImage from '../../assets/img/background.jpg';
 const BackgroundImage = createGlobalStyle`
@@ -37,7 +37,7 @@ const BackgroundImage = createGlobalStyle`
     background-color: #171923;
   }
 `;
-const TITLE = 'bomb.money | Boardroom'
+const TITLE = 'bomb.money | Boardroom';
 
 const useStyles = makeStyles((theme) => ({
   gridItem: {
@@ -126,11 +126,12 @@ const Boardroom = () => {
               <Box mt={3} style={{ width: '600px' }}>
                 <Alert variant="filled" severity="info">
                   <h2> Let's Maintain PEG Together! </h2>
-                  <a href="https://app.bomb.money/xbomb">xBOMB</a> is a great place to put your BOMB rewards
-                  , 20% of all minted BOMB goes directly to xBOMB stakers.<br /><br />
+                  <a href="https://app.bomb.money/xbomb">xBOMB</a> is a great place to put your BOMB rewards , 20% of
+                  all minted BOMB goes directly to xBOMB stakers.
+                  <br />
+                  <br />
                   Please consider putting your earned BOMB into xBOMB, especially when we are not over 1.1 peg.
                 </Alert>
-
               </Box>
             </Grid>
 
@@ -198,7 +199,7 @@ const Boardroom = () => {
       ) : (
         <UnlockWallet />
       )}
-    </Page >
+    </Page>
   );
 };
 

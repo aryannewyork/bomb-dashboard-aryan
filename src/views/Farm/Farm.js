@@ -76,8 +76,8 @@ const Farm = () => {
                   <Alert variant="filled" severity="info">
                     These farms are functioning properly, but need an update to show the accurate TVL and APR.
                     <br />
-                    Reward allocations are 20% of all BSHARE rewards to the 80BOMB-20BTCB and 10% of all rewards to the
-                    80BSHARE-20BSHARE.
+                    Reward allocations are 20% of all BSHARE rewards to the 80BOMB-20BTCB-LP and 10% of all rewards to
+                    the 80BSHARE-20BSHARE.
                   </Alert>
                   <Grid container spacing={3} style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
                     {activeBanks

@@ -7000,7 +7000,7 @@
       }
     ]
   },
-  "BshareMaxiBShareRewardPool": {
+  "BshareMaxiLPBShareRewardPool": {
     "address": "0x1083926054069AaD75d7238E9B809b0eF9d94e5B",
     "abi": [
       {
@@ -7486,7 +7486,7 @@
       }
     ]
   },
-  "BombMaxiBShareRewardPool": {
+  "BombMaxiLPBShareRewardPool": {
     "address": "0x1083926054069AaD75d7238E9B809b0eF9d94e5B",
     "abi": [
       {

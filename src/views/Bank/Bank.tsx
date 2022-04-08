@@ -40,15 +40,15 @@ const Bank: React.FC = () => {
 
 
    let statsOnPool = useStatsForPool(bank);
-  console.log(statsOnPool);
+  // console.log(statsOnPool);
 
-    if (bank.depositTokenName.includes('80BOMB-20BTCB-LP') || bank.depositTokenName.includes('80BSHARE-20WBNB-LP')) {
-      statsOnPool = {
-        dailyAPR: 'COMING SOON',
-        yearlyAPR: 'COMING SOON',
-        TVL: 'COMING SOON',
-      }
-    } 
+  //   if (bank.depositTokenName.includes('80BOMB-20BTCB-LP') || bank.depositTokenName.includes('80BSHARE-20WBNB-LP')) {
+  //     statsOnPool = {
+  //       dailyAPR: 'COMING SOON',
+  //       yearlyAPR: 'COMING SOON',
+  //       TVL: 'COMING SOON',
+  //     }
+  //   } 
   
   
   //const statsOnPool = useStatsForPool(bank);
@@ -145,8 +145,8 @@ const LPTokenHelpText: React.FC<{bank: BankEntity}> = ({bank}) => {
     const busmAddr = bombFinance.BUSM.address;
   const busdAddr = bombFinance.BUSD.address;
 
-  const depositToken = bank.depositTokenName;
-  console.log({depositToken})
+  //const depositToken = bank.depositTokenName;
+  //console.log({depositToken})
   let pairName: string;
   let uniswapUrl: string;
  // let vaultUrl: string;

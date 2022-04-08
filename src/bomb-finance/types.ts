@@ -14,6 +14,11 @@ export interface BankInfo {
   closedForStaking: boolean;
 }
 
+export interface MaxiInfo {
+  totalShares: string;
+  totalLiquidity: string;
+}
+
 export interface Bank extends BankInfo {
   address: string;
   depositToken: ERC20;

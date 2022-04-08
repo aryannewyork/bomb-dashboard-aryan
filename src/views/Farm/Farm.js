@@ -73,12 +73,12 @@ const Farm = () => {
                   <Typography color="textYellow" align="center" variant="h4" gutterBottom style={{ marginTop: '40px' }}>
                     Earn BSHARE by ACSI Maxi LPs
                   </Typography>
-                  <Alert variant="filled" severity="info">
+                  {/* <Alert variant="filled" severity="info">
                     These farms are functioning properly, but need an update to show the accurate TVL and APR.
                     <br />
                     Reward allocations are 20% of all BSHARE rewards to the 80BOMB-20BTCB-LP and 10% of all rewards to
                     the 80BSHARE-20BSHARE.
-                  </Alert>
+                  </Alert> */}
                   <Grid container spacing={3} style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
                     {activeBanks
                       .filter((bank) => bank.sectionInUI === 2)

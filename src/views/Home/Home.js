@@ -27,6 +27,8 @@ import { ReactComponent as IconTelegram } from '../../assets/img/telegram.svg';
 import { Helmet } from 'react-helmet';
 import BombImage from '../../assets/img/bomb.png';
 
+//import useBombMaxiStats from '../../hooks/useBombMaxiStats';
+
 import HomeImage from '../../assets/img/background.jpg';
 const BackgroundImage = createGlobalStyle`
   body {
@@ -61,7 +63,9 @@ const Home = () => {
   const bShareStats = usebShareStats();
   const tBondStats = useBondStats();
   const bombFinance = useBombFinance();
+  // const bombmaxi = useBombMaxiStats('0xd6f52e8ab206e59a1e13b3d6c5b7f31e90ef46ef000200000000000000000028');
 
+  // console.log(bombmaxi);
   // let bomb;
   // if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
   //   bomb = bombTesting;
@@ -247,7 +251,7 @@ const Home = () => {
           </Paper>
         </Grid>
 
-        <Grid container spacing={3}>
+        {/* <Grid container spacing={3}>
           <Grid item xs={12} sm={12} justify="center" style={{ margin: '12px', display: 'flex' }}>
             <Alert variant="filled" severity="info">
               <h2>xBOMB Promo + Regain PEG!</h2>
@@ -262,7 +266,7 @@ const Home = () => {
               </Button>
             </Alert>
           </Grid>
-        </Grid>
+        </Grid> */}
 
         {/* TVL */}
         <Grid item xs={12} sm={4}>

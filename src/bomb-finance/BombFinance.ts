@@ -2,7 +2,7 @@
 //import { Fetcher as FetcherSpirit, Token as TokenSpirit } from '@spiritswap/sdk';
 import { Fetcher, Route, Token } from '@pancakeswap/sdk';
 import { Configuration } from './config';
-import { ContractName, TokenStat, AllocationTime, LPStat, Bank, PoolStats, BShareSwapperStat } from './types';
+import { MaxiInfo, ContractName, TokenStat, AllocationTime, LPStat, Bank, PoolStats, BShareSwapperStat } from './types';
 import { BigNumber, Contract, ethers, EventFilter } from 'ethers';
 import { decimalToBalance } from './ether-utils';
 import { TransactionResponse } from '@ethersproject/providers';
@@ -16,6 +16,8 @@ import config, { bankDefinitions } from '../config';
 import moment from 'moment';
 import { parseUnits } from 'ethers/lib/utils';
 import { BNB_TICKER, SPOOKY_ROUTER_ADDR, BOMB_TICKER } from '../utils/constants';
+import { bombMaxi } from '../services/graph';
+
 /**
  * An API module of Bomb Money contracts.
  * All contract-interacting domain logic should be defined in here.
@@ -303,6 +305,20 @@ export class BombFinance {
     return Treasury.getBurnableBombLeft();
   }
 
+  async getBombMaxiStats(poolId: string): Promise<MaxiInfo> {
+    const BombMaxi = await bombMaxi(poolId);
+    return {
+      totalShares: BombMaxi.data.pool.totalShares.toString(),
+      totalLiquidity: BombMaxi.data.pool.totalLiquidity.toString(),
+
+      // tokenAmount: tokenAmountInOneLP.toFixed(2).toString(),
+      // ftmAmount: ftmAmountInOneLP.toFixed(2).toString(),
+      // priceOfOne: lpTokenPriceFixed,
+      // totalLiquidity: liquidity,
+      // totalSupply: Number(lpTokenSupply).toFixed(2).toString(),
+    };
+  }
+
   /**
    * Calculates the TVL, APR and daily APR of a provided pool/bank
    * @param bank
@@ -473,12 +489,20 @@ export class BombFinance {
         //   tokenPrice = await this.getLPTokenPrice(token, this.BSHARE, false);
       } else if (tokenName === 'BUSM-BUSD-LP') {
         tokenPrice = await this.getBusdLPTokenPrice(token, this.BUSM, true);
+      } else if (tokenName === '80BOMB-20BTCB-LP') {
+        tokenPrice = await this.getMaxiLPTokenPrice(
+          '0xd6f52e8ab206e59a1e13b3d6c5b7f31e90ef46ef000200000000000000000028',
+        );
+      } else if (tokenName === '80BSHARE-20WBNB-LP') {
+        tokenPrice = await this.getMaxiLPTokenPrice(
+          '0x2c374ed1575e5c2c02c569f627299e902a1972cb000200000000000000000027',
+        );
       } else {
         tokenPrice = await this.getTokenPriceFromPancakeswap(token);
         tokenPrice = (Number(tokenPrice) * Number(priceOfOneFtmInDollars)).toString();
       }
     }
-    console.log({ tokenPrice });
+    //console.log({ tokenPrice });
     return tokenPrice;
   }
 
@@ -579,6 +603,19 @@ export class BombFinance {
     const priceOfToken = Number(priceToken);
     const tokenInLP = Number(tokenSupply) / Number(totalSupply);
     const tokenPrice = (Number(priceOfToken) * tokenInLP * 2) //We multiply by 2 since half the price of the lp token is the price of each piece of the pair. So twice gives the total
+      .toString();
+    return tokenPrice;
+  }
+
+  async getMaxiLPTokenPrice(maxiPool: string): Promise<string> {
+    const bombmaxi = await this.getBombMaxiStats(maxiPool);
+    const totalShares = await bombmaxi.totalShares;
+    //Get amount of tokenA
+    const totalLiquidity = await bombmaxi.totalLiquidity;
+    // const stat = isBomb === true ? await this.getBombStat() : await this.getShareStat();
+
+    const tokenInLP = Number(totalLiquidity) / Number(totalShares);
+    const tokenPrice = tokenInLP //We multiply by 2 since half the price of the lp token is the price of each piece of the pair. So twice gives the total
       .toString();
     return tokenPrice;
   }

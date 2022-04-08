@@ -5,6 +5,7 @@
   "author": "Aaron <aaron@1coin.io>",
   "license": "MIT",
   "dependencies": {
+    "@apollo/client": "^3.5.10",
     "@davatar/react": "^1.8.1",
     "@ethersproject/providers": "^5.4.1",
     "@fortawesome/fontawesome-svg-core": "~1.2.32",
@@ -27,6 +28,7 @@
     "bignumber.js": "^9.0.0",
     "clsx": "^1.1.1",
     "ethers": "^5.4.1",
+    "graphql": "^15.0.0",
     "material-ui-image": "^3.3.2",
     "moment": "^2.29.1",
     "node-sass": "^7.0.1",

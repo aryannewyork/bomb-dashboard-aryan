@@ -192,18 +192,18 @@ const Home = () => {
         <Grid item xs={12} sm={8}>
           <Paper>
             <Box p={4} style={{ textAlign: 'center' }}>
-              <h2>Welcome to Bomb</h2>
-              <p>
-                BOMB is an algocoin which is designed to follow the price of BTC. Enjoy high yields normally only found
-                on high risk assets, but with exposure to BTC instead!
-              </p>
+              <h1>BOMB: BITCOIN SAFETY - DEFI YIELDS</h1>
               <p>
                 <strong>BOMB is pegged via algorithm to a 10,000:1 ratio to BTC. $100k BTC = $10 BOMB PEG</strong>
+              </p>
+              <p>
+                <h2>Best Algocoin - 0.5%+ DAILY | Audited | Doxxed team</h2>
                 {/* Stake your BOMB-BTC LP in the Farm to earn BSHARE rewards. Then stake your earned BSHARE in the
                 Boardroom to earn more BOMB! */}
               </p>
               <p>
-                <IconTelegram alt="telegram" style={{ fill: '#dddfee', height: '15px' }} /> Join our{' '}
+                {/* <IconTelegram alt="telegram" style={{ fill: '#dddfee', height: '15px' }} /> */}
+                Join our{' '}
                 <a
                   href="https://t.me/bombmoneybsc"
                   rel="noopener noreferrer"
@@ -211,6 +211,15 @@ const Home = () => {
                   style={{ color: '#dddfee' }}
                 >
                   Telegram
+                </a>{' '}
+                or{' '}
+                <a
+                  href="https://discord.bomb.money"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  style={{ color: '#dddfee' }}
+                >
+                  Discord
                 </a>{' '}
                 to find out more!
               </p>
@@ -251,13 +260,13 @@ const Home = () => {
           </Paper>
         </Grid>
 
-        {/* <Grid container spacing={3}>
+        <Grid container spacing={3}>
           <Grid item xs={12} sm={12} justify="center" style={{ margin: '12px', display: 'flex' }}>
             <Alert variant="filled" severity="info">
-              <h2>xBOMB Promo + Regain PEG!</h2>
-              <b>Read about the promotion and game plan!</b>{' '}
+              <h2>BOMB Cycle: Guide to Indefinite Printing</h2>
+              <b>How to maximize earnings while keeping BOMB printing!</b>{' '}
               <Button
-                href="https://bombbshare.medium.com/operation-regain-peg-xbomb-promo-b8d59dc6e105"
+                href="https://bombbshare.medium.com/the-bomb-cycle-how-to-print-forever-e89dc82c12e5"
                 target={'_blank'}
                 className="shinyButton"
                 style={{ margin: '10px' }}
@@ -266,7 +275,7 @@ const Home = () => {
               </Button>
             </Alert>
           </Grid>
-        </Grid> */}
+        </Grid>
 
         {/* TVL */}
         <Grid item xs={12} sm={4}>

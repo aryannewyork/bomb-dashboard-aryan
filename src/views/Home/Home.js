@@ -192,12 +192,12 @@ const Home = () => {
         <Grid item xs={12} sm={8}>
           <Paper>
             <Box p={4} style={{ textAlign: 'center' }}>
-              <h1>BOMB: BITCOIN SAFETY - DEFI YIELDS</h1>
+              <h1>BOMB: BITCOIN SAFETY + DEFI YIELDS</h1>
               <p>
                 <strong>BOMB is pegged via algorithm to a 10,000:1 ratio to BTC. $100k BTC = $10 BOMB PEG</strong>
               </p>
               <p>
-                <h2>Best Algocoin - 0.5%+ DAILY | Audited | Doxxed team</h2>
+                <h2>Best Algocoin | 0.5%+ DAILY | Audited | Doxxed team</h2>
                 {/* Stake your BOMB-BTC LP in the Farm to earn BSHARE rewards. Then stake your earned BSHARE in the
                 Boardroom to earn more BOMB! */}
               </p>

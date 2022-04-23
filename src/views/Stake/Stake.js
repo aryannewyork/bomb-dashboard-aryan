@@ -16,7 +16,7 @@ import useXbombBalance from '../../hooks/useXbombBalance';
 import useXbombAPR from '../../hooks/useXbombAPR';
 import useStakedTotalBombBalance from '../../hooks/useTotalStakedBombBalance';
 import { createGlobalStyle } from 'styled-components';
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet';
 
 import HomeImage from '../../assets/img/background.jpg';
 import useFetchBombAPR from '../../hooks/useFetchBombAPR';
@@ -27,7 +27,7 @@ const BackgroundImage = createGlobalStyle`
     background-color: #171923;
   }
 `;
-const TITLE = 'bomb.money | xBOMB - BOMB Staking'
+const TITLE = 'bomb.money | xBOMB - BOMB Staking';
 
 const useStyles = makeStyles((theme) => ({
   gridItem: {
@@ -53,12 +53,11 @@ const Staking = () => {
 
   const xbombPrintAprNice = useMemo(() => (xbombPrintApr ? Number(xbombPrintApr).toFixed(2) : null), [xbombPrintApr]);
 
-
   const stakedTotalBombBalance = useStakedTotalBombBalance();
   const bombTotalStaked = Number(stakedTotalBombBalance / 1000000000000000000).toFixed(0);
   const xbombTVL = useMemo(() => (xbombAPR ? Number(xbombAPR.TVL).toFixed(0) : null), [xbombAPR]);
   // const xbombDailyAPR = useMemo(() => (xbombAPR ? Number(xbombAPR.dailyAPR).toFixed(2) : null), [xbombAPR]);
-  const xbombYearlyAPR = useMemo(() => (xbombAPR ? Number(xbombAPR.yearlyAPR).toFixed(2) : null), [xbombAPR]);
+  //const xbombYearlyAPR = useMemo(() => (xbombAPR ? Number(xbombAPR.yearlyAPR).toFixed(2) : null), [xbombAPR]);
 
   // console.log('xbombAPR', xbombYearlyAPR);
 
@@ -78,21 +77,23 @@ const Staking = () => {
           <Grid container justify="center">
             <Box mt={3} style={{ width: '600px' }}>
               <Alert variant="filled" severity="info">
-                <b> Most rewards are generated from boardroom printing!</b><br />
-                20% of all BOMB minted - from protocol allocation, does not impact BSHARE boardroom printing.<br />
-                If TWAP of BOMB peg is not over 1.01, yield will be reduced.<br /><br />
-                The APR (Minted BOMB) shown is based on our latest print, and is only applied when the Boardroom is printing (over 1.01 peg at epoch start)<br />
-                <br />We are currently in debt phase, APR will be approximately 3x higher once debt is repaid.
+                <b> Most rewards are generated from boardroom printing!</b>
+                <br />
+                20% of all BOMB minted - from protocol allocation, does not impact BSHARE boardroom printing.
+                <br />
+                If TWAP of BOMB peg is not over 1.01, yield will be reduced.
+                <br />
+                <br />
+                The APR (Minted BOMB) shown is based on our latest print, and is only applied when the Boardroom is
+                printing (over 1.01 peg at epoch start)
+                <br />
+                {/* <br />We are currently in debt phase, APR will be approximately 3x higher once debt is repaid. */}
               </Alert>
-
             </Box>
           </Grid>
 
-
-
           <Box mt={5}>
             <Grid container justify="center" spacing={3}>
-
               <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
                 <Card className={classes.gridItem}>
                   <CardContent align="center">
@@ -114,14 +115,14 @@ const Staking = () => {
                   </CardContent>
                 </Card>
               </Grid> */}
-              <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
+              {/* <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
                 <Card className={classes.gridItem}>
                   <CardContent align="center">
                     <Typography style={{ textTransform: 'uppercase', color: '#f9d749' }}>Historic APR</Typography>
                     <Typography>{xbombYearlyAPR}%</Typography>
                   </CardContent>
                 </Card>
-              </Grid>
+              </Grid> */}
               <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
                 <Card className={classes.gridItem}>
                   <CardContent align="center">
@@ -148,7 +149,6 @@ const Staking = () => {
               </Grid>
             </Grid>
 
-
             <Box mt={4}>
               <StyledBoardroom>
                 <StyledCardsWrapper>
@@ -158,7 +158,6 @@ const Staking = () => {
                   {/* <Spacer /> */}
 
                   <StyledCardWrapper>
-
                     <Stake />
                   </StyledCardWrapper>
                 </StyledCardsWrapper>
@@ -178,8 +177,15 @@ const Staking = () => {
                           <h2>About xBOMB & Rewards</h2>
                           {/* <p><strong>We are currently depositing 10,000 BOMB per week into the staking pool until our BTC Single Staking service is launched.</strong></p> */}
                           <p>xBOMB will be the governance token required to cast votes on protocol decisions.</p>
-                          <p>20% of all BOMB minted will be deposited into the xBOMB smart contract, increasing the amount of BOMB that can be redeemed for each xBOMB. Rewards will be deposited at random times to prevent abuse.</p>
-                          <p>Functionality will be developed around xBOMB including using it as collateral to borrow other assets.</p>
+                          <p>
+                            20% of all BOMB minted will be deposited into the xBOMB smart contract, increasing the
+                            amount of BOMB that can be redeemed for each xBOMB. Rewards will be deposited at random
+                            times to prevent abuse.
+                          </p>
+                          <p>
+                            Functionality will be developed around xBOMB including using it as collateral to borrow
+                            other assets.
+                          </p>
                           <p>Reward structure subject to change based on community voting.</p>
                         </CardContent>
                       </Card>

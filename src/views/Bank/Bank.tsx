@@ -18,7 +18,7 @@ import useRedeem from '../../hooks/useRedeem';
 import {Bank as BankEntity} from '../../bomb-finance';
 import useBombFinance from '../../hooks/useBombFinance';
 import {Alert} from '@material-ui/lab';
-import { bankDefinitions } from '../../config';
+//import { bankDefinitions } from '../../config';
 
 const useStyles = makeStyles((theme) => ({
   gridItem: {

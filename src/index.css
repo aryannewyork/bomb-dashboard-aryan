@@ -73,6 +73,7 @@ code {
   justify-content: flex-start !important;
   text-transform: none !important;
 }
+
 .wallet-button:hover {
   color: #f9d749 !important;
 }
@@ -143,8 +144,8 @@ code {
   align-items: center;
 }
 
-.account > img,
-.account > div {
+.account>img,
+.account>div {
   margin-right: 8px;
 }
 
@@ -187,6 +188,10 @@ code {
 
 .btc {
   background-image: url('/bomb3.png');
+}
+
+.bbond {
+  background-image: url('/bbond-256.png');
 }
 
 .App {
@@ -271,6 +276,7 @@ code {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -281,6 +287,7 @@ code {
     margin: 0rem 1rem;
     width: 100%;
   }
+
   .modal__video-style {
     width: 100%;
   }
@@ -291,10 +298,566 @@ code {
     background: transparent;
     height: auto;
   }
+
   .modal__video-align {
     bottom: 0px;
   }
+
   .modal__video-style {
     height: auto;
   }
+}
+
+.table {
+  display: inline-block;
+}
+
+.SummaryCard {
+  background-color: rgba(0, 0, 255, 0.2);
+  align-items: center;
+  color: white;
+  margin: 5px;
+  border: solid white 1px;
+  border-radius: 8px;
+}
+
+.heading {
+  color: white;
+  text-align: center;
+  padding: 5px;
+}
+
+.contents {
+  display: flex;
+  flex-direction: row;
+}
+
+.Supply-table {
+  flex: 2;
+}
+
+.Epoch-stats {
+  align-items: center;
+  text-align: center;
+  padding-left: 30px;
+}
+
+.epoch-hr {
+  width: 20%;
+  align-self: auto;
+}
+
+.cap {
+  text-transform: capitalize;
+}
+
+.epoch-heading {
+  color: white;
+}
+
+.Next-epoch {
+  font-size: larger;
+}
+
+.green {
+  color: green;
+}
+
+.InvestmentCard {
+  background-color: rgba(0, 0, 255, 0.2);
+  align-items: center;
+  color: white;
+  margin: 5px;
+  border: solid white 1px;
+  border-radius: 8px;
+  width: 96%;
+  margin-left: 0;
+  padding: 2%;
+  display: inline-block;
+}
+
+.investment-outer-box {
+  display: inline-block;
+  margin-top: 2%;
+  width: 59%;
+}
+
+.investment-pane {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 0.5px;
+}
+
+.ip1 {
+  width: 100%;
+}
+
+.ip2 {
+  display: inline-block;
+  margin-left: 15%;
+  margin-right: 0;
+  width: 100%;
+  margin-top: -50%;
+}
+
+.latest-news-heading {
+  text-align: left;
+  position: relative;
+
+}
+
+.latest-news-box {
+  display: inline-block;
+  width: 30%;
+  margin-left: 11%;
+  margin-bottom: 10%;
+  position: relative;
+  vertical-align: top;
+}
+
+.latest-news {
+  margin: 5%;
+  background-color: rgba(0, 0, 255, 0.2);
+  ;
+  margin-left: 0%;
+  padding: 3%;
+  margin-right: 0;
+  border-radius: 8px;
+  border: solid white 1px;
+  margin-bottom: 0.5px;
+  width: 100%;
+  height: 310px;
+}
+
+.invest-now-link {
+  background-color: rgba(48, 224, 247, 0.551);
+  padding: 1.5%;
+  border: solid red 0.2px;
+  font-size: larger;
+}
+
+.investment-card {
+  padding-bottom: 0.5px;
+}
+
+.discord {
+  margin-right: 1.5%;
+  margin-left: -2%;
+}
+
+.docs {
+  margin-left: 1.5%;
+  margin-right: -2%;
+}
+
+.discord,
+.docs {
+  padding: 1%;
+  display: inline-block;
+  width: 46.2%;
+  text-align: center;
+  background-color: rgba(221, 225, 226, 0.3);
+  margin-top: 2%;
+  border: solid blue 0.5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.social {
+  color: black;
+}
+
+.white {
+  color: white;
+}
+
+.homepage-bomb-money {
+  color: white;
+  font-size: large;
+  font-weight: bold;
+}
+
+.social-links {
+  align-items: center;
+  color: black;
+  margin-left: -2%;
+}
+
+.invest-now {
+  font-size: 25px;
+}
+
+.bshare-200x200 {
+  position: relative;
+  margin-left: -15px;
+  margin-top: -15px;
+  display: inline-block;
+}
+
+.thin {
+  font-weight: lighter;
+}
+
+.bshare-stats {
+  position: relative;
+  display: inline-block;
+  margin-top: -20px;
+  margin-left: 10px;
+  width: 55%;
+}
+
+.recommended-btn {
+  margin: 3%;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 15px;
+  border: none;
+  opacity: 0.8;
+  border-radius: 2px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.bshare-tvl {
+  display: inline-block;
+  margin-left: 10%;
+}
+
+.total-staked-bshare {
+  text-align: right;
+}
+
+.bshare-staked-img {
+  margin-bottom: -0.75%;
+}
+
+.bondfarms {
+  background-color: rgba(0, 0, 255, 0.2);
+  border-radius: 8px;
+  border: solid white 1px;
+  padding: 2%;
+}
+
+.bomb-farm-heading {
+  margin: 2%;
+}
+
+.bomb-farm-subheading {
+  margin-top: 0;
+  margin-left: 2%;
+}
+
+.bombfarms-heading-box {
+  display: inline-block;
+  width: 35%;
+}
+
+.btn {
+  border-radius: 20px;
+  text-align: center;
+  width: 145px;
+  height: 35px;
+  align-items: center;
+  background-color: transparent;
+  border: solid white 1px;
+  display: inline-block;
+  margin-left: 2%;
+}
+
+.claim-all {
+  margin-left: 50%;
+}
+
+.img-bomb2 {
+  margin-bottom: -5%;
+  margin-left: 5%;
+}
+
+.button-size-md {
+  font-size: medium;
+}
+
+.img-bombbtc {
+  margin-left: 0;
+
+}
+
+.heading-bomb-btc {
+  padding-top: 0;
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+  margin-left: 1.5%;
+}
+
+.TVL-bombbtc {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 2%;
+  margin-left: 25%;
+}
+
+.table-bombbtc {
+  display: inline-block;
+}
+
+.btn-ib {
+  display: inline-block;
+}
+
+
+.buttons {
+  display: inline-block;
+  width: 41%;
+  vertical-align: top;
+  margin-top: 4%;
+  margin-left: 30%;
+  padding: 0;
+}
+
+.img-upload, .img-download {
+  margin-bottom: -5%;
+  margin-left: 5%;
+}
+
+.hr-bsharebnb {
+  border: 0;
+  border-top: 1px solid white;
+}
+.hr-bombbtc {
+  margin-left: -24px;
+  margin-right: -24px;
+  border: 0;
+  border-top: 1px solid white;
+}
+
+.bonds {
+  margin-top: 5%;
+  background-color: rgba(0, 0, 255, 0.2);
+  border-radius: 8px;
+  border: solid white 1px;
+  padding: 2%;
+}
+
+.bonds-heading {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 0.5%;
+  margin-left: 1%;
+}
+
+.bonds-box-top {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.gray {
+  color: #F5F5F5;
+  opacity: 0.6;
+}
+
+.bond-table {
+  display: inline-block;
+}
+
+.shift-left {
+  margin-left: 10%;
+}
+
+.bond-purchase {
+  display: inline-block;
+  vertical-align: top;
+  width: 27%;
+  margin-left: 25%;
+}
+
+.btn-purchase {
+  border-radius: 20px;
+  text-align: center;
+  width: 145px;
+  height: 35px;
+  align-items: center;
+  background-color: transparent;
+  border: solid white 1px;
+  display: inline-block;
+  margin-left: 110%;
+  margin-top: 5%;
+}
+
+.purchase-heading {
+  display: inline-block;
+}
+
+.ib {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+}
+
+.trolley-img {
+  margin-bottom: -5%;
+}
+
+.hr-purchase {
+  margin-right: -110%;
+  margin-left: -110%;
+}
+
+.ib2 {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+  margin-top: 4%;
+}
+
+.bond-balance {
+  vertical-align: top;
+  display: inline-block;
+}
+
+
+.boadroom-buttons {
+  display: inline-block;
+}
+
+.boardroom-table {
+  display: inline-block;
+}
+
+.boardroom-table-left {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 2%;
+  margin-left: 10%;
+}
+
+.ib-btn {
+  display: inline-block;
+  width: 50%;
+}
+
+.bankname-farms {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 1%;
+}
+
+.TVL-farm {
+  display: inline-block;
+  margin-right: 200px;
+  padding-left: 46%;
+  vertical-align: top;
+}
+
+.TVL-number-farms {
+  margin-left: 10px;
+}
+
+.shinyButton2 {
+  border-radius: 20px;
+  text-align: center;
+  width: 135px;
+  height: 35px;
+  align-items: center;
+  background-color: transparent;
+  border: solid white 1px;
+  display: inline-block;
+  margin-left: 2%;
+}
+
+.shinyButton2:hover, .shinyButton2-boardroom:hover, .claim-rewards-btn:hover {
+  background-color: #f9d749 !important;
+  color: #171923 !important;
+}
+
+.lg-btn {
+  font-size: large;
+}
+
+.shinyButtonDisabled {
+  border-radius: 20px;
+  text-align: center;
+  width: 135px;
+  height: 35px;
+  align-items: center;
+  background-color: transparent;
+  border: solid white 1px;
+  display: inline-block;
+  margin-left: 2%;
+  vertical-align: top;
+  margin-top: 4.1%;
+}
+
+.claim-rewards-btn {
+  border-radius: 20px;
+  text-align: center;
+  width: 160px;
+  height: 35px;
+  align-items: center;
+  background-color: transparent;
+  border: solid white 1px;
+  display: inline-block;
+  margin-left: 2%;
+  vertical-align: top;
+  margin-top: 4%;
+
+}
+
+.md-btn {
+  font-size: medium;
+}
+
+.img-bomb2_farm {
+  vertical-align: top;
+}
+
+.shinyButton2-boardroom {
+  border-radius: 20px;
+  text-align: center;
+  width: 140px;
+  height: 35px;
+  align-items: center;
+  background-color: transparent;
+  border: solid white 1px;
+  display: inline-block;
+  margin-left: 2%;
+  vertical-align: top;
+}
+
+.shinyButtonDisabled2-boardroom {
+  border-radius: 20px;
+  text-align: center;
+  width: 140px;
+  height: 35px;
+  align-items: center;
+  background-color: transparent;
+  border: solid white 1px;
+  display: inline-block;
+  margin-left: 5%;
+  vertical-align: top;
+  margin-top: 5.9%;
+}
+
+.buttons-boardroom {
+  display: inline-block;
+  width: 50%;
+  align-items: center;
+  vertical-align: top;
+  padding-left: 2%;
+}
+
+.shinyButtonDisabled2-boardroom-claim-rewards {
+  border-radius: 20px;
+  text-align: center;
+  width: 265px;
+  height: 35px;
+  align-items: center;
+  background-color: transparent;
+  border: solid white 1px;
+  display: inline-block;
+  margin-left: 5%;
+  vertical-align: top;
+  margin-top: 3%;
 }
